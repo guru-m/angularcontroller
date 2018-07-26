@@ -2,17 +2,24 @@
 
 var formsController = function($scope) {
   $scope.form = {
+    luxuryType:'No',
     carType: '',
     hasTurbo: true
+    
   };
 
   $scope.formDisabled = {
     name:'',
-    disableName:false
+    PlayerName:'Messi',
+    disableName:false,
+    disablePlayerName:true
   };
 
   $scope.formSubmit = {
     name: '',
+    newName:'',
+    checkedName:'',
+    newCheckedName:'',
     hasId: true,
     error: undefined
   };
@@ -33,13 +40,21 @@ var formsController = function($scope) {
     fromArray: $scope.dropdownArray[2],
     singleValueFromArray: 2
   };
-
+// ng submit validation
   $scope.validateForm = function() {
+    alert('calling');
     $scope.formSubmit.error = undefined;
+    // alert(!$scope.formSubmit.hasId);
     if (!$scope.formSubmit.hasId) {
       $scope.formSubmit.error = 'Dude do not have ID!';
       return;
     }
+     if($scope.formSubmit.newName === $scope.formSubmit.name){
+      alert('wrong');
+      console.log('inside value comperator');
+    }
+
+    
     // Do something here like call REST service or change screen
   }
 };
